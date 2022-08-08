@@ -1,16 +1,16 @@
 package com.example.RentingApartments.controller;
 
+import com.example.RentingApartments.DTO.AddApartmentRequestDTO;
 import com.example.RentingApartments.DTO.ApartmentDTO;
 import com.example.RentingApartments.exceptions.ResourceNotFoundException;
 import com.example.RentingApartments.model.Apartment;
+import com.example.RentingApartments.model.Renter;
 import com.example.RentingApartments.service.ApartmentService;
+import com.example.RentingApartments.service.RenterService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
 
 import java.util.List;
@@ -22,6 +22,9 @@ public class ApartmentController {
 
     @Autowired
     private ApartmentService apartmentService;
+
+    @Autowired
+    private RenterService renterService;
 
     @GetMapping
     public ResponseEntity<List<ApartmentDTO>> getApartments(){
@@ -46,4 +49,21 @@ public class ApartmentController {
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Apartment with that id: "+ id ,resourceNotFoundException);
         }
     }
+
+    @PostMapping()
+    public ResponseEntity<ApartmentDTO> saveApartment(@RequestBody AddApartmentRequestDTO addApartmentRequestDTO) {
+
+        Apartment apartment = new Apartment();
+        apartment.setAddress(addApartmentRequestDTO.getAddress());
+        apartment.setCity(addApartmentRequestDTO.getCity());
+        apartment.setOwner(this.renterService.findById(addApartmentRequestDTO.getOwnerId()));
+        apartment.setNumberOfRooms(addApartmentRequestDTO.getNumberOfRooms());
+        apartment.setNumberOfBeds(addApartmentRequestDTO.getNumberOfBeds());
+        apartment.setPetFriendly(true);
+
+        apartment = apartmentService.save(apartment);
+        return new ResponseEntity<>(new ApartmentDTO(apartment), HttpStatus.CREATED);
+    }
+
+
 }

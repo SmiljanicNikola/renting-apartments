@@ -1,12 +1,11 @@
 package com.example.RentingApartments.controller;
 
-import com.example.RentingApartments.DTO.RenterDTO;
+import com.example.RentingApartments.DTO.ReviewDTO;
 import com.example.RentingApartments.DTO.UserDTO;
 import com.example.RentingApartments.exceptions.ResourceNotFoundException;
-import com.example.RentingApartments.model.Renter;
+import com.example.RentingApartments.model.Review;
 import com.example.RentingApartments.model.User;
-import com.example.RentingApartments.service.RenterService;
-import com.example.RentingApartments.service.UserService;
+import com.example.RentingApartments.service.ReviewService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -20,33 +19,33 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 @RestController
-@RequestMapping(value = "api/users")
-public class UserController {
+@RequestMapping(value = "api/reviews")
+public class ReviewController {
 
     @Autowired
-    private UserService userService;
+    private ReviewService reviewService;
 
     @GetMapping
-    public ResponseEntity<List<UserDTO>> getUsers(){
-        List<UserDTO> usersDTO = userService
+    public ResponseEntity<List<ReviewDTO>> getReviews(){
+        List<ReviewDTO> reviewsDTO = reviewService
                 .findAll()
                 .stream()
-                .map(user -> new UserDTO(user))
+                .map(review -> new ReviewDTO(review))
                 .collect(Collectors.toList());
 
-        return new ResponseEntity<>(usersDTO, HttpStatus.OK);
+        return new ResponseEntity<>(reviewsDTO, HttpStatus.OK);
     }
 
     @GetMapping(value="/{id}")
-    public ResponseEntity<UserDTO> getUserById(@PathVariable("id") Integer id){
+    public ResponseEntity<ReviewDTO> getReviewById(@PathVariable("id") Integer id){
         try
         {
-            User user = userService.findById(id);
-            return new ResponseEntity<>(new UserDTO(user), HttpStatus.OK);
+            Review review = reviewService.findById(id);
+            return new ResponseEntity<>(new ReviewDTO(review), HttpStatus.OK);
         }
         catch(ResourceNotFoundException resourceNotFoundException)
         {
-            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "User with that id: "+ id ,resourceNotFoundException);
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Review with that id: "+ id ,resourceNotFoundException);
         }
     }
 

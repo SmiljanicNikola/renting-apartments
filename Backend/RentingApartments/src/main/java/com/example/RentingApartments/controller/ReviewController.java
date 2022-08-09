@@ -1,18 +1,17 @@
 package com.example.RentingApartments.controller;
 
-import com.example.RentingApartments.DTO.ReviewDTO;
-import com.example.RentingApartments.DTO.UserDTO;
+import com.example.RentingApartments.DTO.*;
 import com.example.RentingApartments.exceptions.ResourceNotFoundException;
+import com.example.RentingApartments.model.Advertisement;
 import com.example.RentingApartments.model.Review;
 import com.example.RentingApartments.model.User;
+import com.example.RentingApartments.service.ApartmentService;
+import com.example.RentingApartments.service.ClientService;
 import com.example.RentingApartments.service.ReviewService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
 
 import java.util.List;
@@ -24,6 +23,12 @@ public class ReviewController {
 
     @Autowired
     private ReviewService reviewService;
+
+    @Autowired
+    private ApartmentService apartmentService;
+
+    @Autowired
+    private ClientService clientService;
 
     @GetMapping
     public ResponseEntity<List<ReviewDTO>> getReviews(){
@@ -47,6 +52,19 @@ public class ReviewController {
         {
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Review with that id: "+ id ,resourceNotFoundException);
         }
+    }
+
+    @PostMapping()
+    public ResponseEntity<ReviewDTO> saveReview(@RequestBody AddReviewRequestDTO addReviewRequestDTO) {
+
+        Review review = new Review();
+        review.setApartment(this.apartmentService.findById(addReviewRequestDTO.getApartmentId()));
+        review.setReviewAuthor(this.clientService.findById(addReviewRequestDTO.getReviewAuthorId()));
+        review.setGrade(addReviewRequestDTO.getGrade());
+        review.setComment(addReviewRequestDTO.getComment());
+
+        review = reviewService.save(review);
+        return new ResponseEntity<>(new ReviewDTO(review), HttpStatus.CREATED);
     }
 
 }

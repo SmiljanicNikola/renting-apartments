@@ -65,5 +65,40 @@ public class ApartmentController {
         return new ResponseEntity<>(new ApartmentDTO(apartment), HttpStatus.CREATED);
     }
 
+    @PutMapping(value = "/{id}")
+    public ResponseEntity<ApartmentDTO> updateApartment(@RequestBody AddApartmentRequestDTO addApartmentRequestDTO, @PathVariable("id") Integer id) {
+
+        Apartment apartment = apartmentService.findById(id);
+
+        if (apartment == null) {
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        }
+
+        if(addApartmentRequestDTO.getAddress() != null) {
+            apartment.setAddress(addApartmentRequestDTO.getAddress());
+        }
+
+        if(addApartmentRequestDTO.getCity() != null) {
+            apartment.setCity(addApartmentRequestDTO.getCity());
+        }
+
+        if(addApartmentRequestDTO.getOwnerId() != null) {
+            apartment.setOwner(this.renterService.findById(addApartmentRequestDTO.getOwnerId()));
+        }
+
+        if(addApartmentRequestDTO.getNumberOfRooms() != null) {
+            apartment.setNumberOfRooms(addApartmentRequestDTO.getNumberOfRooms());
+        }
+
+        if(addApartmentRequestDTO.getNumberOfBeds() != null) {
+            apartment.setNumberOfBeds(addApartmentRequestDTO.getNumberOfBeds());
+        }
+
+        apartment = apartmentService.save(apartment);
+
+        return new ResponseEntity<>(new ApartmentDTO(apartment), HttpStatus.OK);
+
+    }
+
 
 }

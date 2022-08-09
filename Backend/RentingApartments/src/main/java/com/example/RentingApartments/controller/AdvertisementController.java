@@ -71,4 +71,41 @@ public class AdvertisementController {
         return new ResponseEntity<>(new AdvertisementDTO(advertisement), HttpStatus.CREATED);
     }
 
+    @PutMapping(value = "/{id}")
+    public ResponseEntity<AdvertisementDTO> updateAdvertisement(@RequestBody AddAdvertisementRequestDTO addAdvertisementRequestDTO, @PathVariable("id") Integer id) {
+
+        Advertisement advertisement = advertisementService.findById(id);
+
+        if (advertisement == null) {
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        }
+
+        if(addAdvertisementRequestDTO.getApartmentId() != null) {
+            advertisement.setApartment(this.apartmentService.findById(addAdvertisementRequestDTO.getApartmentId()));
+        }
+
+        advertisement.setPrice(addAdvertisementRequestDTO.getPrice());
+
+        if(addAdvertisementRequestDTO.getEmail() != null) {
+            advertisement.setEmail(addAdvertisementRequestDTO.getEmail());
+        }
+
+        advertisement = advertisementService.save(advertisement);
+
+        return new ResponseEntity<>(new AdvertisementDTO(advertisement), HttpStatus.OK);
+
+    }
+
+    //Brisanje koje nije logicko
+    @DeleteMapping(value = "/{id}")
+    public ResponseEntity<?> delete(@PathVariable("id") Integer id) {
+        Advertisement advertisement = advertisementService.findById(id);
+        if (advertisement == null) {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+        advertisementService.delete(id);
+        return new ResponseEntity<>(HttpStatus.OK);
+
+    }
+
 }

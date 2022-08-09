@@ -1,19 +1,21 @@
 package com.example.RentingApartments.controller;
 
 import com.example.RentingApartments.DTO.RenterDTO;
+import com.example.RentingApartments.DTO.SignUpRequestDTO;
 import com.example.RentingApartments.DTO.UserDTO;
 import com.example.RentingApartments.exceptions.ResourceNotFoundException;
+import com.example.RentingApartments.model.Client;
 import com.example.RentingApartments.model.Renter;
+import com.example.RentingApartments.model.Roles;
 import com.example.RentingApartments.model.User;
+import com.example.RentingApartments.service.ClientService;
 import com.example.RentingApartments.service.RenterService;
 import com.example.RentingApartments.service.UserService;
+import com.mysql.cj.protocol.ExportControlled;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
 
 import java.util.List;
@@ -25,6 +27,12 @@ public class UserController {
 
     @Autowired
     private UserService userService;
+
+    @Autowired
+    private RenterService renterService;
+
+    @Autowired
+    private ClientService clientService;
 
     @GetMapping
     public ResponseEntity<List<UserDTO>> getUsers(){
@@ -48,6 +56,32 @@ public class UserController {
         {
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, "User with that id: "+ id ,resourceNotFoundException);
         }
+    }
+
+    @PostMapping("/renter")
+    public ResponseEntity<?> registerRenter(@RequestBody SignUpRequestDTO signUpRequest){
+        User user = new User(signUpRequest.getName(), signUpRequest.getLastname(), signUpRequest.getUsername(), signUpRequest.getPassword());
+        user.setRole(Roles.RENTER);
+
+        userService.save(user);
+
+        Renter renter = new Renter(user, signUpRequest.getPhoneNumber(), signUpRequest.getEmail());
+        renterService.save(renter);
+
+        return ResponseEntity.ok("Renter Successfuly registered!");
+    }
+
+    @PostMapping("/client")
+    public ResponseEntity<?> registerClient(@RequestBody SignUpRequestDTO signUpRequest){
+        User user = new User(signUpRequest.getName(), signUpRequest.getLastname(), signUpRequest.getUsername(), signUpRequest.getPassword());
+        user.setRole(Roles.CLIENT);
+
+        userService.save(user);
+
+        Client client = new Client(user, signUpRequest.getPhoneNumber(), signUpRequest.getEmail());
+        clientService.save(client);
+
+        return ResponseEntity.ok("Client Successfuly registered!");
     }
 
 }

@@ -19,6 +19,27 @@ input[type="text"]{
 
 }
 
+input[type="date"]{
+    padding: 15px;
+    text-align: center;
+    appearance: none;
+    background-color: none;
+    border: 1px solid;
+    line-height: 0;
+    font-size: 17px;
+    width: 100%;
+    display: block;
+    box-sizing: border-box;
+    padding: 10px 15px;
+    border-radius: 15px;
+    
+    letter-spacing: 0.01em;
+    position: relative;
+    z-index: 1;
+   
+
+}
+
 input[type="password"]{
     padding: 15px;
     text-align: center;

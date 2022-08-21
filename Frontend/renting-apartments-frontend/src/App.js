@@ -3,9 +3,11 @@ import {BrowserRouter as Router, Routes, Route} from 'react-router-dom'
 import { Apartments } from './components/pages/Apartments';
 import { Navbar } from './components/layout/Navbar';
 import './assets/css/navbar.css'
-import { Advertisements } from './components/pages/Advertisements';
+import { Advertisements } from './components/pages/Advertisements/Advertisements';
 import { Register } from './components/forms/Register';
 import { Footer } from './components/layout/Footer';
+import { RentRequestForm } from './components/forms/RentRequestForm';
+import { Advertisementss } from './components/pages/Advertisements/Advertisementss';
 
 function App() {
   return (
@@ -16,8 +18,9 @@ function App() {
 
         <Routes>
           <Route exact path='/apartments' element={<Apartments/>}/>
-          <Route exact path='/advertisements' element={<Advertisements/>}/>
+          <Route exact path='/advertisements' element={<Advertisementss/>}/>
           <Route exact path='/register' element={<Register/>}/>
+          <Route exact path='/rentRequest' element={<RentRequestForm/>}/>
 
         </Routes>
 

@@ -1,14 +1,16 @@
 import React, { useState, useEffect } from 'react'
-import { InfoWrapper, Column1, TextWrapper, Subtitle, Heading, TopLine, InfoContainer, Column2, ImgWrap, InfoRow, BtnWrap, Img} from '../elements/AdvertisementElement.js'
-import { Button } from '../elements/ButtonElement'
-import apartmentImage from '../../assets/img/apartment-one.jpg'
-import AdvertisementService from '../../services/AdvertisementService'
-import ApartmentService from '../../services/ApartmentService.js';
+import { InfoWrapper, Column1, TextWrapper, Subtitle, Heading, TopLine, InfoContainer, Column2, ImgWrap, InfoRow, BtnWrap, Img} from '../../elements/AdvertisementElement.js'
+import { Button } from '../../elements/ButtonElement'
+import apartmentImage from '../../../assets/img/apartment-one.jpg'
+import AdvertisementService from '../../../services/AdvertisementService'
+import ApartmentService from '../../../services/ApartmentService.js';
+import { useNavigate } from 'react-router-dom'
 
 export const Advertisements = ({lightBg,id,imgStart,topLine,lightText,headLine,description,buttonLabel,darkText,img,alt, primary,dark,dark2}) => {
 
   const[advertisements, setAdvertisements] = useState([]);
   const[apartments, setApartments] = useState([]);
+  const navigate = useNavigate();
 
   useEffect(() => {
 
@@ -22,6 +24,10 @@ export const Advertisements = ({lightBg,id,imgStart,topLine,lightText,headLine,d
 		})
 
   }, []);
+
+  const sendRentRequest = () =>{
+    navigate('/rentRequest');
+  }
 
   return (
     <>
@@ -39,7 +45,8 @@ export const Advertisements = ({lightBg,id,imgStart,topLine,lightText,headLine,d
                         <Subtitle darkText={darkText}><b>Contact at: </b>{advertisement.email}</Subtitle>
 
                         <BtnWrap>
-                            <Button to='/apartments'
+                            <Button
+                            onClick={sendRentRequest}
                             smooth={true}
                             duration={500}
                             spy={true}
@@ -47,6 +54,7 @@ export const Advertisements = ({lightBg,id,imgStart,topLine,lightText,headLine,d
                             offset={-80}
                            
                             >Send Request</Button>
+                            
                           </BtnWrap>
                     </TextWrapper>
 

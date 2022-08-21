@@ -27,7 +27,7 @@ h1{
 
 label{
     color:white;
-    margin-top: 10px;
+    margin-top: 20px;
     margin-right: 7px;
     font-size: 14px;
     font-weight: 400px;
@@ -43,8 +43,30 @@ label{
     margin-top: 30px;
 }
 
+.form-input-rentRequest{
+    display: flex;
+    flex-direction: column;
+    width: 250px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 10px;
+}
+
 .form button{
     width: 75%;
+    height: 50px;
+    border: none;
+    background: #00a8e8;
+    color: white;
+    border-radius: 17px;
+    font-weight: bold;
+    font-size: 22px;
+    cursor: pointer;
+}
+
+.button-rentRequest{
+    width: 75%;
+    margin-top: 50px;
     height: 50px;
     border: none;
     background: #00a8e8;

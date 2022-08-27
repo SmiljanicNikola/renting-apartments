@@ -66,9 +66,7 @@ export const Advertisementss = () => {
   
       PaginationHelper.displayPaginated(nextPage, size, AdvertisementService.getAdvertisementsPaginatedWithParams, setPaginatedAdvertisements)
   
-  
     }	
-  
   
     const previousPage = async () => {
       let previousPage = currentPage - 1;
@@ -153,27 +151,27 @@ export const Advertisementss = () => {
         
     </div>
   
-</div>
+  </div>
 
-<div class="pagination">
-					<ul>
-						<li>
-							<button onClick={previousPage}>Previous</button>
-						</li>
-						<li>
-							<Pagination
-								clientsPerPage={advertisementsPerPage}
-								totalClients={advertisements.length}
-								paginate={paginate}
-							/>
-						</li>
-						<li>
-							<button onClick={nextPage}>
-								Next
-							</button>
-						</li>
-					</ul>
-				</div>
+  <div class="pagination">
+        <ul>
+          <li>
+            <button onClick={previousPage}>Previous</button>
+          </li>
+          <li>
+            <Pagination
+              clientsPerPage={advertisementsPerPage}
+              totalClients={advertisements.length}
+              paginate={paginate}
+            />
+          </li>
+          <li>
+            <button onClick={nextPage}>
+              Next
+            </button>
+          </li>
+        </ul>
+    </div>
 </>
   )
 }

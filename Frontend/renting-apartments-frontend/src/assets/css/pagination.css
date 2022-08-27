@@ -2,7 +2,7 @@
   width: 100%;
   margin-top: 10px;
   text-align: center;
-  border-top: 1px dotted #979696;
+  border-top: 1px dotted rgb(0, 33, 65);;
   padding-top: 5px;
 }
 .pagination ul {
@@ -20,14 +20,14 @@
   padding: 0 10px;
   display: block;
   font-size: 20px;
-  color: #f67d34;
+  color: rgb(0, 33, 65);
 }
 .pagination ul li a:hover {
   text-decoration: underline;
 }
 
 .pagination button{
-    color: #f67d34;
+    color: rgb(0, 33, 65);
     width: 60px;
     height: 40px;
 }

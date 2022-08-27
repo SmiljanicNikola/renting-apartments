@@ -25,9 +25,6 @@ public class Advertisement {
     @Column(name="price", unique=false, nullable=false)
     private float price;
 
-    @Column(name="email", unique=false, nullable=false)
-    private String email;
-
     @Column(name="expired", unique=false, nullable=false)
     private boolean expired;
 
@@ -38,12 +35,11 @@ public class Advertisement {
     @OneToMany(mappedBy="advertisement")
     private List<RentRequest> rentRequests;
 
-    public Advertisement(Integer id, Renter renter, Apartment apartment, float price, String email, boolean expired, boolean valid) {
+    public Advertisement(Integer id, Renter renter, Apartment apartment, float price, boolean expired, boolean valid) {
         this.id = id;
         this.renter = renter;
         this.apartment = apartment;
         this.price = price;
-        this.email = email;
         this.expired = expired;
         this.valid = valid;
     }
@@ -51,11 +47,11 @@ public class Advertisement {
     public Advertisement() {
     }
 
-    public Advertisement(Renter renter, Apartment apartment, float price, String email, boolean expired, boolean valid) {
+    public Advertisement(Renter renter, Apartment apartment, float price, boolean expired, boolean valid) {
         this.renter = renter;
         this.apartment = apartment;
         this.price = price;
-        this.email = email;
+
         this.expired = expired;
         this.valid = valid;
     }
@@ -90,14 +86,6 @@ public class Advertisement {
 
     public void setPrice(float price) {
         this.price = price;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
     }
 
     public boolean isExpired() {

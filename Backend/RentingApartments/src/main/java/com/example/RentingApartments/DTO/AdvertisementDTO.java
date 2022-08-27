@@ -16,31 +16,27 @@ public class AdvertisementDTO {
 
     private float price;
 
-    private String email;
-
     private boolean expired;
 
     private boolean valid;
 
     public AdvertisementDTO(Advertisement advertisement){
-        this(advertisement.getId(), new RenterDTO(advertisement.getRenter()), new ApartmentDTO(advertisement.getApartment()), advertisement.getPrice(), advertisement.getEmail(), advertisement.isExpired(), advertisement.isValid());
+        this(advertisement.getId(), new RenterDTO(advertisement.getRenter()), new ApartmentDTO(advertisement.getApartment()), advertisement.getPrice(), advertisement.isExpired(), advertisement.isValid());
     }
 
-    public AdvertisementDTO(RenterDTO renter, ApartmentDTO apartment, float price, String email, boolean expired, boolean valid) {
+    public AdvertisementDTO(RenterDTO renter, ApartmentDTO apartment, float price, boolean expired, boolean valid) {
         this.renter = renter;
         this.apartment = apartment;
         this.price = price;
-        this.email = email;
         this.expired = expired;
         this.valid = valid;
     }
 
-    public AdvertisementDTO(Integer id, RenterDTO renter, ApartmentDTO apartment, float price, String email, boolean expired, boolean valid) {
+    public AdvertisementDTO(Integer id, RenterDTO renter, ApartmentDTO apartment, float price, boolean expired, boolean valid) {
         this.id = id;
         this.renter = renter;
         this.apartment = apartment;
         this.price = price;
-        this.email = email;
         this.expired = expired;
         this.valid = valid;
     }
@@ -78,14 +74,6 @@ public class AdvertisementDTO {
 
     public void setPrice(float price) {
         this.price = price;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
     }
 
     public boolean isExpired() {

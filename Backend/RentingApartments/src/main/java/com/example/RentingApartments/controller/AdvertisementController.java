@@ -11,6 +11,8 @@ import com.example.RentingApartments.service.AdvertisementService;
 import com.example.RentingApartments.service.ApartmentService;
 import com.example.RentingApartments.service.RenterService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -43,6 +45,11 @@ public class AdvertisementController {
         return new ResponseEntity<>(advertisementsDTO, HttpStatus.OK);
     }
 
+    @GetMapping("/paginate")
+    public ResponseEntity<Page<Advertisement>> findAll(Pageable pageable){
+        return new ResponseEntity<>(advertisementService.findAll(pageable), HttpStatus.OK);
+    }
+
     @GetMapping(value="/{id}")
     public ResponseEntity<AdvertisementDTO> getAdvertisementById(@PathVariable("id") Integer id){
         try
@@ -63,7 +70,6 @@ public class AdvertisementController {
         advertisement.setRenter(this.renterService.findById(addAdvertisementRequestDTO.getRenterId()));
         advertisement.setApartment(this.apartmentService.findById(addAdvertisementRequestDTO.getApartmentId()));
         advertisement.setPrice(addAdvertisementRequestDTO.getPrice());
-        advertisement.setEmail(addAdvertisementRequestDTO.getEmail());
         advertisement.setExpired(false);
         advertisement.setValid(true);
 
@@ -85,10 +91,6 @@ public class AdvertisementController {
         }
 
         advertisement.setPrice(addAdvertisementRequestDTO.getPrice());
-
-        if(addAdvertisementRequestDTO.getEmail() != null) {
-            advertisement.setEmail(addAdvertisementRequestDTO.getEmail());
-        }
 
         advertisement = advertisementService.save(advertisement);
 

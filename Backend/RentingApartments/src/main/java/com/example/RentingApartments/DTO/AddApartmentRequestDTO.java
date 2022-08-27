@@ -8,6 +8,8 @@ public class AddApartmentRequestDTO {
 
     private String city;
 
+    private String apartmentName;
+
     private Integer ownerId;
 
     private Integer numberOfRooms;
@@ -19,19 +21,21 @@ public class AddApartmentRequestDTO {
     public AddApartmentRequestDTO() {
     }
 
-    public AddApartmentRequestDTO(Integer id, String address, String city, Integer ownerId, Integer numberOfRooms, Integer numberOfBeds, boolean petFriendly) {
-        this.id = id;
+    public AddApartmentRequestDTO(String address, String city, String apartmentName, Integer ownerId, Integer numberOfRooms, Integer numberOfBeds, boolean petFriendly) {
         this.address = address;
         this.city = city;
+        this.apartmentName = apartmentName;
         this.ownerId = ownerId;
         this.numberOfRooms = numberOfRooms;
         this.numberOfBeds = numberOfBeds;
         this.petFriendly = petFriendly;
     }
 
-    public AddApartmentRequestDTO(String address, String city, Integer ownerId, Integer numberOfRooms, Integer numberOfBeds, boolean petFriendly) {
+    public AddApartmentRequestDTO(Integer id, String address, String city, String apartmentName, Integer ownerId, Integer numberOfRooms, Integer numberOfBeds, boolean petFriendly) {
+        this.id = id;
         this.address = address;
         this.city = city;
+        this.apartmentName = apartmentName;
         this.ownerId = ownerId;
         this.numberOfRooms = numberOfRooms;
         this.numberOfBeds = numberOfBeds;
@@ -60,6 +64,14 @@ public class AddApartmentRequestDTO {
 
     public void setCity(String city) {
         this.city = city;
+    }
+
+    public String getApartmentName() {
+        return apartmentName;
+    }
+
+    public void setApartmentName(String apartmentName) {
+        this.apartmentName = apartmentName;
     }
 
     public Integer getOwnerId() {

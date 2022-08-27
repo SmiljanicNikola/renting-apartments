@@ -60,9 +60,8 @@ input[type="password"]{
    
 
 }
-input:focus{
-    outline: none;
-    background: #00a8e8;
+.requestForm input:focus{
+    /*outline: none;*/
     color: white;
      
 }

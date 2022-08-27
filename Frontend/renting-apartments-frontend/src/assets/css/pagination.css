@@ -1,0 +1,33 @@
+.pagination {
+  width: 100%;
+  margin-top: 10px;
+  text-align: center;
+  border-top: 1px dotted #979696;
+  padding-top: 5px;
+}
+.pagination ul {
+  margin: 0 auto;
+  display: inline-block;
+}
+.pagination ul li {
+  display: inline-block;
+  border-right: 1px solid #ececec;
+}
+.pagination ul li.last {
+  border-right: 0;
+}
+.pagination ul li a {
+  padding: 0 10px;
+  display: block;
+  font-size: 20px;
+  color: #f67d34;
+}
+.pagination ul li a:hover {
+  text-decoration: underline;
+}
+
+.pagination button{
+    color: #f67d34;
+    width: 60px;
+    height: 40px;
+}

@@ -8,6 +8,8 @@ import com.example.RentingApartments.model.Renter;
 import com.example.RentingApartments.service.ApartmentService;
 import com.example.RentingApartments.service.RenterService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -37,6 +39,11 @@ public class ApartmentController {
         return new ResponseEntity<>(apartmentsDTO, HttpStatus.OK);
     }
 
+    @GetMapping("/paginate")
+    public ResponseEntity<Page<Apartment>> findAll(Pageable pageable){
+        return new ResponseEntity<>(apartmentService.findAll(pageable), HttpStatus.OK);
+    }
+
     @GetMapping(value="/{id}")
     public ResponseEntity<ApartmentDTO> getApartmentById(@PathVariable("id") Integer id){
         try
@@ -56,6 +63,7 @@ public class ApartmentController {
         Apartment apartment = new Apartment();
         apartment.setAddress(addApartmentRequestDTO.getAddress());
         apartment.setCity(addApartmentRequestDTO.getCity());
+        apartment.setApartmentName(addApartmentRequestDTO.getApartmentName());
         apartment.setOwner(this.renterService.findById(addApartmentRequestDTO.getOwnerId()));
         apartment.setNumberOfRooms(addApartmentRequestDTO.getNumberOfRooms());
         apartment.setNumberOfBeds(addApartmentRequestDTO.getNumberOfBeds());
@@ -80,6 +88,10 @@ public class ApartmentController {
 
         if(addApartmentRequestDTO.getCity() != null) {
             apartment.setCity(addApartmentRequestDTO.getCity());
+        }
+
+        if(addApartmentRequestDTO.getApartmentName() != null) {
+            apartment.setApartmentName(addApartmentRequestDTO.getApartmentName());
         }
 
         if(addApartmentRequestDTO.getOwnerId() != null) {

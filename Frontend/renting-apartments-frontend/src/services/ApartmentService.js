@@ -8,6 +8,14 @@ class ApartmentService{
         return axios.get(APARTMENTS_REST_API_URL);
     }
 
+    getApartmentsPaginatedWithParams(nextPage, size){
+        return axios.get(APARTMENTS_REST_API_URL+"/paginate?page="+nextPage+"&size="+size);    
+    }
+
+    getApartmentsPaginated(){
+        return axios.get(APARTMENTS_REST_API_URL+"/paginate");    
+    }
+
 }
 
 export default new ApartmentService();

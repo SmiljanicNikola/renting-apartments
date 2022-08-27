@@ -5,10 +5,13 @@ import com.example.RentingApartments.DTO.RentRequestDTO;
 import com.example.RentingApartments.DTO.RentRequestFormDTO;
 import com.example.RentingApartments.DTO.ReviewDTO;
 import com.example.RentingApartments.exceptions.ResourceNotFoundException;
+import com.example.RentingApartments.model.Advertisement;
 import com.example.RentingApartments.model.RentRequest;
 import com.example.RentingApartments.model.Review;
 import com.example.RentingApartments.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -39,6 +42,11 @@ public class RentRequestController {
                 .collect(Collectors.toList());
 
         return new ResponseEntity<>(rentRequestsDTO, HttpStatus.OK);
+    }
+
+    @GetMapping("/paginate")
+    public ResponseEntity<Page<RentRequest>> findAll(Pageable pageable){
+        return new ResponseEntity<>(rentRequestService.findAll(pageable), HttpStatus.OK);
     }
 
     @GetMapping(value="/{id}")

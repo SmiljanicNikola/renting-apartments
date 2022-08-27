@@ -11,7 +11,7 @@ export const InfoContainer = styled.div`
 export const InfoWrapper = styled.div`
     display:grid;
     z-index:1;
-    height:560px;
+    height:480px;
     width:100%;
     max-width: 1100px;
     margin-right: auto;
@@ -56,12 +56,12 @@ export const TopLine = styled.p`
     font-weight:700;
     letter-spacing:1.4px;
     text-transform: uppercase;
-    margin-bottom: 16px;
+    margin-bottom: 8px;
 `;
 
 export const Heading = styled.h1`
     margin-bottom:20px;
-    font-size:38px;
+    font-size:32px;
     line-height:1.1;
     font-weight:400;
     color:#010606;
@@ -73,7 +73,7 @@ export const Heading = styled.h1`
 
 export const Subtitle = styled.p`
     max-width:440px;
-    margin-bottom: 25px;
+    margin-bottom: 18px;
     margin-left:20px;
     font-size:20px;
     line-height:24px;

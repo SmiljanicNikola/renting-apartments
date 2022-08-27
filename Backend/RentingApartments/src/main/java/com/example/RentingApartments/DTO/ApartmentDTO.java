@@ -13,6 +13,8 @@ public class ApartmentDTO {
 
     private String city;
 
+    private String apartmentName;
+
     private RenterDTO owner;
 
     private Integer numberOfRooms;
@@ -25,26 +27,36 @@ public class ApartmentDTO {
     }
 
     public ApartmentDTO(Apartment apartment){
-        this(apartment.getId(), apartment.getAddress(), apartment.getCity(), new RenterDTO(apartment.getOwner()), apartment.getNumberOfRooms(), apartment.getNumberOfBeds(), apartment.isPetFriendly());
+        this(apartment.getId(), apartment.getAddress(), apartment.getCity(), apartment.getApartmentName(), new RenterDTO(apartment.getOwner()), apartment.getNumberOfRooms(), apartment.getNumberOfBeds(), apartment.isPetFriendly());
     }
 
-    public ApartmentDTO(String address, String city, RenterDTO owner, Integer numberOfRooms, Integer numberOfBeds, boolean petFriendly) {
+    public ApartmentDTO(String address, String city, String apartmentName, RenterDTO owner, Integer numberOfRooms, Integer numberOfBeds, boolean petFriendly) {
         this.address = address;
         this.city = city;
+        this.apartmentName = apartmentName;
         this.owner = owner;
         this.numberOfRooms = numberOfRooms;
         this.numberOfBeds = numberOfBeds;
         this.petFriendly = petFriendly;
     }
 
-    public ApartmentDTO(Integer id, String address, String city, RenterDTO owner, Integer numberOfRooms, Integer numberOfBeds, boolean petFriendly) {
+    public ApartmentDTO(Integer id, String address, String city, String apartmentName, RenterDTO owner, Integer numberOfRooms, Integer numberOfBeds, boolean petFriendly) {
         this.id = id;
         this.address = address;
         this.city = city;
+        this.apartmentName = apartmentName;
         this.owner = owner;
         this.numberOfRooms = numberOfRooms;
         this.numberOfBeds = numberOfBeds;
         this.petFriendly = petFriendly;
+    }
+
+    public String getApartmentName() {
+        return apartmentName;
+    }
+
+    public void setApartmentName(String apartmentName) {
+        this.apartmentName = apartmentName;
     }
 
     public Integer getId() {

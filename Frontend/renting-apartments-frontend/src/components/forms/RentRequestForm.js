@@ -21,31 +21,31 @@ export const RentRequestForm = () => {
             <div className="formInput">
                 
             <label>Client Username: </label>
-            <input className='form-input-rentRequest' 
+            <input className='inputText' 
                 type="text"
                 name="username"
             
             />
 
             <label>Email of apartment Owner: </label>
-            <input className='form-input-rentRequest' 
+            <input className='inputText' 
                 type="text"
                 name="email"
             
             />
 
             <label>Start Date: </label>
-            <input className='form-input-rentRequest' type="date"
+            <input className='inputDate' type="date"
             
             />
 
             <label>End Date: </label>
-            <input className='form-input-rentRequest' type="date"
+            <input className='inputDate' type="date"
             
             />
 
             <label>Additional Message: </label>
-            <input className='form-input-rentRequest' type="text" name="additionalMessage" id="additionalMessage"
+            <input className='inputText'  type="text" name="additionalMessage" id="additionalMessage"
             
             />
 

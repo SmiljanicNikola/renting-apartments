@@ -13,6 +13,9 @@ public interface UserService {
 
     User findById(Integer userId);
 
+    User findByUsername(String username);
+
+
     User save(User user);
 
     void delete(Integer id);

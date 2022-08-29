@@ -17,6 +17,11 @@ public class JWTResponse {
     public JWTResponse() {
     }
 
+    public JWTResponse(String token, String username) {
+        this.token = token;
+        this.username = username;
+    }
+
     public String getToken() {
         return token;
     }

@@ -9,6 +9,7 @@ import { Footer } from './components/layout/Footer';
 import { RentRequestForm } from './components/forms/RentRequestForm';
 import { Advertisementss } from './components/pages/Advertisements/Advertisementss';
 import { AddAdvertisement } from './components/pages/AddAdvertisement/AddAdvertisement';
+import { Login } from './components/pages/Login/Login';
 
 function App() {
   return (
@@ -23,6 +24,7 @@ function App() {
           <Route exact path='/register' element={<Register/>}/>
           <Route exact path='/rentRequest' element={<RentRequestForm/>}/>
           <Route exact path='/addAdvertisement' element={<AddAdvertisement/>}/>
+          <Route exact path='/login' element={<Login/>}/>
 
         </Routes>
 

@@ -47,10 +47,12 @@ export const Navbar = ({toggle}) => {
           </a>
         </li>
         <li className="nav__item">
-          <a href="#" className="nav__link">
-            Contact
+          <a href="/login" className="nav__link">
+            Login
           </a>
         </li>
+        
+        
       </ul>
       <div onClick={navToggle} className={icon}>
         <div className="line1"></div>

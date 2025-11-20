@@ -1,0 +1,77 @@
+.advertisement-detail-container {
+    display: flex;
+    justify-content: center;
+    padding: 40px;
+    background-color: #f9fafb;
+    min-height: 100vh;
+  }
+  
+  .advertisement-card {
+    display: flex;
+    flex-wrap: wrap;
+    max-width: 900px;
+    background: white;
+    border-radius: 15px;
+    box-shadow: 0 6px 20px rgba(0,0,0,0.1);
+    overflow: hidden;
+  }
+  
+  .advertisement-image img {
+    width: 100%;
+    max-width: 450px;
+    height: auto;
+    object-fit: cover;
+  }
+  
+  .advertisement-info {
+    flex: 1;
+    padding: 20px 30px;
+  }
+  
+  .advertisement-info h1 {
+    font-size: 2rem;
+    color: #333;
+    margin-bottom: 10px;
+  }
+  
+  .price {
+    font-size: 1.5rem;
+    color: #ff5722;
+    font-weight: bold;
+    margin-bottom: 20px;
+  }
+  
+  .details-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(150px, 1fr));
+    gap: 10px;
+    margin-bottom: 20px;
+  }
+  
+  .details-grid p {
+    font-size: 1rem;
+    color: #555;
+  }
+  
+  .loading {
+    text-align: center;
+    padding: 50px;
+    font-size: 1.5rem;
+    color: #777;
+  }
+  
+  /* Responsive Design */
+  @media (max-width: 768px) {
+    .advertisement-card {
+      flex-direction: column;
+      text-align: center;
+    }
+  
+    .details-grid {
+      grid-template-columns: 1fr;
+    }
+  
+    .advertisement-info {
+      padding: 20px;
+    }
+  }

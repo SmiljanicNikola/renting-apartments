@@ -10,6 +10,7 @@ import { RentRequestForm } from './components/forms/RentRequestForm';
 import { Advertisementss } from './components/pages/Advertisements/Advertisementss';
 import { AddAdvertisement } from './components/pages/AddAdvertisement/AddAdvertisement';
 import { Login } from './components/pages/Login/Login';
+import { AdvertisementDetails } from './components/pages/Advertisements/AdvertisementDetails';
 
 function App() {
   return (
@@ -25,6 +26,7 @@ function App() {
           <Route exact path='/rentRequest' element={<RentRequestForm/>}/>
           <Route exact path='/addAdvertisement' element={<AddAdvertisement/>}/>
           <Route exact path='/login' element={<Login/>}/>
+          <Route exact path="/advertisement/:id" element={<AdvertisementDetails />} />
 
         </Routes>
 

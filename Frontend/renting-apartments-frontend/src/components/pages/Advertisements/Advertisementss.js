@@ -92,9 +92,6 @@ export const Advertisementss = () => {
             <p>Max Price: </p><input type="search" name="search-clients" className="in-search-number" />
           </div>
         </div>
-        <div className="link new-member-popup">Create new Advertisement</div>
-
-       
     
     <div className="cards__container">
         <div className="cards__wrapper">
@@ -104,7 +101,6 @@ export const Advertisementss = () => {
                 src={apartmentImage}
                 text="Check out this offer and save money for yourself"
                 label='Last minute action'
-               
                 path='/apartments'
                 />
                 <AdvertiseItem 
@@ -126,7 +122,7 @@ export const Advertisementss = () => {
                     text1={"$"+advertisement.price + " per night"}
                     text2={advertisement.apartment.numberOfBeds + " Beds , " + advertisement.apartment.numberOfRooms + " Rooms."}
                     label={advertisement.apartment.petFriendly ? "Pet Friendly" : "Pets Are not allowed"}
-                    path='/services'
+                    path={`/advertisement/${advertisement.id}`}
 
                     
                     />

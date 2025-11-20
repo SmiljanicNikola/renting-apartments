@@ -1,95 +1,116 @@
-.requestForm{
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap');
+
+body, html {
+    margin: 0;
+    padding: 0;
+    font-family: 'Poppins', sans-serif;
+    /* background: linear-gradient(135deg, #1e3c72, #2a5298); */
+    height: 100%;
+  }
+  
+  .body-login {
     display: flex;
     justify-content: center;
-    text-align: center;
-
-}
-
-
-
-.form{
-    height: 750px;
-    width: 600px;
     align-items: center;
-    align-content: center;
-    background: rgb(0, 33, 65);
-    margin-top: 5%;
-    border-radius: 17px;
-    margin-bottom: 40px;
+    min-height: 100vh;
+  }
+  
+  .form {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 16px;
+    padding: 40px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.2);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
     display: flex;
     flex-direction: column;
-
-}
-
-h1{
+    align-items: center;
+    width: 90%;
+    max-width: 400px;
+  }
+  
+  h1 {
+    color: #fff;
+    font-size: 2rem;
+    margin-bottom: 20px;
     text-align: center;
-    margin-top: 20px;
-    color:white;
-}
-
-label{
-    color:white;
-    margin-top: 20px;
-    margin-right: 7px;
-    font-size: 14px;
-    font-weight: 400px;
-}
-
-
-.form-input{
+  }
+  
+  label {
+    color: #fff;
+    font-size: 1rem;
+    margin-bottom: 4px;
+    font-weight: 500;
+  }
+  
+  .form-input {
     display: flex;
     flex-direction: column;
-    /*width: 250px;*/
     margin-left: auto;
     margin-right: auto;
     margin-top: 30px;
-}
 
-.form-input-rentRequest{
+
+    box-shadow: 0 0 5px rgba(0, 168, 232, 0.8);
+
+    /* background: rgba(255, 255, 255, 0.15);
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+    border-radius: 2rem;
+    width: 350px;
+    height: 4rem;
+    padding: 1rem;
+    border: none;
+    outline: none;
+    color: #3c354e;
+    font-size: 1.5rem; */
+  }
+  
+  .inputText input {
+    width: 100%;
+    padding: 10px;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    background: rgba(255, 255, 255, 0.95);
+    outline: none;
+  }
+  
+  .inputText input:focus {
+    box-shadow: 0 0 5px rgba(0, 168, 232, 0.8);
+  }
+  
+  .radio {
     display: flex;
-    flex-direction: column;
-    width: 250px;
-    margin-left: auto;
-    margin-right: auto;
-    margin-top: 10px;
-}
-
-.button-white{
+    justify-content: center;
+    gap: 20px;
+    margin-top: 20px;
+    color: #fff;
+    font-size: 1rem;
+  }
+  
+  .button-white {
     width: 75%;
-    height: 50px;
+    height: 45px;
+    margin-top: 30px;
     border: none;
-    background: #00a8e8;
+    background: rgb(0, 33, 65);
     color: white;
-    border-radius: 17px;
-    font-weight: bold;
-    font-size: 22px;
+    border-radius: 10px;
+    font-weight: 600;
+    font-size: 18px;
     cursor: pointer;
-}
-
-.button-rentRequest{
-    width: 75%;
-    margin-top: 50px;
-    height: 50px;
-    border: none;
-    background: #00a8e8;
-    color: white;
-    border-radius: 17px;
-    font-weight: bold;
-    font-size: 22px;
-    cursor: pointer;
-}
-
-.button-rentRequest:hover{
-    transition: all 0.2s ease-in-out;
-    background:white;
-    color:#00a8e8;
-    border-radius: 17px;
-}
-
-.button-white:hover{
-    transition: all 0.2s ease-in-out;
-    background:white;
-    color:#00a8e8;
-    border-radius: 17px;
-
-}
+    transition: all 0.3s ease-in-out;
+  }
+  
+  .button-white:hover {
+    background: white;
+    color: #00a8e8;
+    box-shadow: 0 4px 12px rgba(0, 168, 232, 0.5);
+  }
+  
+  @media only screen and (max-width: 768px) {
+    .form {
+      width: 90%;
+      padding: 30px;
+    }
+  }

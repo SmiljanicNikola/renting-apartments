@@ -6,6 +6,7 @@ import '../../assets/css/register.css'
 import { Button } from '../elements/ButtonElement'
 import UserService from '../../services/UserService';
 import styled from "styled-components";
+import { AuthenticationService } from '../../services/AuthenticationService';
 
 
 export const Register = () => {
@@ -90,9 +91,9 @@ export const Register = () => {
 
         if(clientRole){
             console.log(values)
-            UserService.registerClient(values);
+            AuthenticationService.registerClient(values);
         }else{
-            UserService.registerRenter(values);
+          AuthenticationService.registerRenter(values);
         }
     }
 

@@ -7,7 +7,9 @@ export const AuthenticationService = {
     login,
     logout,
     getRole,
-    getUsername
+    getUsername,
+    registerClient,
+    registerRenter
 };
 
 async function login(userCredentials){
@@ -53,3 +55,11 @@ function getUsername() {
       return null;
     }
   }
+
+  function registerClient(client) {
+    return axios.post(AUTH_REST_API_URL + '/register/client', client);
+}
+
+function registerRenter(renter) {
+    return axios.post(AUTH_REST_API_URL + '/register/renter', renter);
+}
